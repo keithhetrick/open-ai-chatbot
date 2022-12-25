@@ -16,11 +16,15 @@
 
   <div id="app">
 
-    <!-- show Ask Cathy! The Chabox A.I. Personal Assistant on render, then disappear when chat begins -->
-    <!-- <div id="chat_intro">
-      <h1>Chatty Cathy</h1>
-      <h3>Your A.I. Personal Assistant</h3>
-    </div> -->
+    <!-- add popup function from script.js to the chatbot -->
+    <script>
+      function popup() {
+        alert("Chatty Cathy is here to help you. Ask her anything!");
+      }
+    </script>
+
+    <!-- add popup function to chatbot button -->
+    <button id="chatbot" onclick="popup()"><img src="./assets/bot.svg" />Chatty Cathy</button>
 
     <!-- show chat container -->
     <div id="chat_container"></div>

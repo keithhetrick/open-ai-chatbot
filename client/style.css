@@ -11,6 +11,22 @@ body {
   background: #343541;
 }
 
+/* make text look robotic */
+#chatbot {
+  margin: 0 auto;
+  padding: 10px;
+  background: #343541;
+  gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Roboto Mono", monospace;
+  align-items: center;
+  font-size: 1.2em;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
 #app {
   width: 100vw;
   height: 100vh;
@@ -42,50 +58,6 @@ body {
 /* hides scrollbar */
 #chat_container::-webkit-scrollbar {
   display: none;
-}
-
-#chat_intro {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 20px 0;
-  margin-top: 10px;
-}
-
-#chat_intro:hover {
-  width: 300px;
-  border-radius: 5px;
-  border: 1px solid #6e6e6f;
-  box-shadow: 0 0 0 1px #6e6e6f, 0 0 0 2px #6e6e6f, 0 0 0 3px #6e6e6f;
-  animation: wiggle 1.5s ease-in-out;
-}
-
-@keyframes wiggle {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(5deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-#chat_intro h3 {
-  font-size: 25px;
-  font-weight: 400;
-  color: #dcdcdc;
 }
 
 .wrapper {

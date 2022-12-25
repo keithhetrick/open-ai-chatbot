@@ -1,6 +1,9 @@
 import bot from "./assets/bot.svg";
 import user from "./assets/user.svg";
 
+// import axios
+import axios from "axios";
+
 const form = document.querySelector("form");
 const chatContainer = document.querySelector("#chat_container");
 
@@ -84,9 +87,26 @@ const handleSubmit = async (e) => {
   // messageDiv.innerHTML = "..."
   loader(messageDiv);
 
-  // https://codex-im0y.onrender.com/
+  const URL = "http://localhost:8000";
 
-  const response = await fetch("http://localhost:5000", {
+  // axios POST request to localhost:8000
+  // const response = await axios
+  //   .post(
+  //     "http://localhost:8000",
+  //     {
+  //       prompt: data.get("prompt"),
+  //     },
+  //     {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     }
+  //   )
+  //   .catch((error) => {
+  //     console.log("ERROR: " + error);
+  //   });
+
+  const response = await fetch(URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -108,10 +128,11 @@ const handleSubmit = async (e) => {
 
     typeText(messageDiv, parsedData);
   } else {
+    // const err = await response.json();
     const err = await response.text();
 
     messageDiv.innerHTML = "Something went wrong";
-    alert(err);
+    alert("Error: " + err);
   }
 };
 
