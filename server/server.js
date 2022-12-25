@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
@@ -39,17 +39,6 @@ app.post("/", async (req, res) => {
     res.status(200).send({
       bot: response.data.choices[0].text,
     });
-
-    // append AI respnse to aiResponse.txt file
-    const fs = require("fs");
-    fs.appendFile(
-      "aiResponse.txt",
-      response.data.choices[0].text,
-      function (err) {
-        if (err) throw err;
-        console.log("Saved response!");
-      }
-    );
   } catch (error) {
     console.log("ERROR: " + error);
     res.status(500).send({ error });

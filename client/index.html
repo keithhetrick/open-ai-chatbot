@@ -4,23 +4,35 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="favicon.ico" />
-  <meta name="description" content="Ask Chatty: A Chabox A.I." />
+  <meta name="description" content="Chatty Cathy: Your A.I. Personal Assistant" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css">
 
-  <title>Ask Chatty: A Chabox A.I.</title>
+  <title>Chatty Cathy: Your A.I Assistant</title>
 
 </head>
 
 <body>
+
   <div id="app">
+
+    <!-- show Ask Cathy! The Chabox A.I. Personal Assistant on render, then disappear when chat begins -->
+    <!-- <div id="chat_intro">
+      <h1>Chatty Cathy</h1>
+      <h3>Your A.I. Personal Assistant</h3>
+    </div> -->
+
+    <!-- show chat container -->
     <div id="chat_container"></div>
 
-    <form>
-      <textarea name="prompt" rows="1" cols="1" placeholder="Ask Codex..."></textarea>
-      <button type="submit"><img src="assets/send.svg" /></button>
+    <!-- show chat form -->
+    <form id="chat_form">
+      <textarea name="prompt" rows="1" cols="1" placeholder="Ask me something..."></textarea>
+      <button id="chat_submit" type="submit"><img src="assets/send.svg" /></button>
     </form>
+
   </div>
+
   <script type="module" src="/script.js"></script>
 </body>
 
