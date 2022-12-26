@@ -1,9 +1,6 @@
 import bot from "./assets/bot.svg";
 import user from "./assets/user.svg";
 
-// import axios
-import axios from "axios";
-
 const form = document.querySelector("form");
 const chatContainer = document.querySelector("#chat_container");
 
@@ -87,24 +84,7 @@ const handleSubmit = async (e) => {
   // messageDiv.innerHTML = "..."
   loader(messageDiv);
 
-  const URL = "http://localhost:8000";
-
-  // axios POST request to localhost:8000
-  // const response = await axios
-  //   .post(
-  //     URL,
-  //     {
-  //       prompt: data.get("prompt"),
-  //     },
-  //     {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     }
-  //   )
-  //   .catch((error) => {
-  //     console.log("ERROR: " + error);
-  // });
+  const URL = "http://localhost:5000";
 
   const response = await fetch(URL, {
     method: "POST",
