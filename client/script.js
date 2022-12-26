@@ -92,7 +92,7 @@ const handleSubmit = async (e) => {
   // axios POST request to localhost:8000
   // const response = await axios
   //   .post(
-  //     "http://localhost:8000",
+  //     URL,
   //     {
   //       prompt: data.get("prompt"),
   //     },
@@ -104,7 +104,7 @@ const handleSubmit = async (e) => {
   //   )
   //   .catch((error) => {
   //     console.log("ERROR: " + error);
-  //   });
+  // });
 
   const response = await fetch(URL, {
     method: "POST",
