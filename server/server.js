@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-const PORT = process.env.PORT;
+const PORT = 5000;
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
@@ -13,16 +13,18 @@ const openai = new OpenAIApi(configuration);
 
 const app = express();
 
+app.use(express.static("public"));
+
 app.use(cors());
 app.use(express.json());
 
-app.get("/", async (req, res) => {
+app.get("/api/prompts", async (req, res) => {
   res.status(200).send({
     message: "Hello from the server!",
   });
 });
 
-app.post("/", async (req, res) => {
+app.post("/api/prompts", async (req, res) => {
   try {
     const prompt = req.body.prompt;
 

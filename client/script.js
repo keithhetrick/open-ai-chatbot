@@ -1,3 +1,4 @@
+import axios from "axios";
 import bot from "./assets/bot.svg";
 import user from "./assets/user.svg";
 
@@ -84,36 +85,28 @@ const handleSubmit = async (e) => {
   // messageDiv.innerHTML = "..."
   loader(messageDiv);
 
-  const URL = "http://localhost:5000";
+  const URL = "http://localhost:5000/api/prompts";
 
-  const response = await fetch(URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
+  // POST request axios vs fetch to the URL & body
+  axios
+    .post(URL, {
       prompt: data.get("prompt"),
-    }),
-  });
+    })
+    .then((res) => {
+      clearInterval(loadInterval);
+      messageDiv.innerHTML = " ";
 
-  clearInterval(loadInterval);
-  messageDiv.innerHTML = " ";
+      const parsedData = res.data.bot.trim();
 
-  if (response.ok) {
-    const data = await response.json();
-    const parsedData = data.bot.trim(); // trims any trailing spaces/'\n'
+      // logs the response from the AI
+      console.log("Chatty Cathy response: " + parsedData);
 
-    // logs the response from the AI
-    console.log("AI Data rsponse:" + parsedData);
-
-    typeText(messageDiv, parsedData);
-  } else {
-    // const err = await response.json();
-    const err = await response.text();
-
-    messageDiv.innerHTML = "Something went wrong";
-    alert("Error: " + err);
-  }
+      typeText(messageDiv, parsedData);
+    })
+    .catch((err) => {
+      messageDiv.innerHTML = "Something went wrong";
+      alert("Error: " + err);
+    });
 };
 
 form.addEventListener("submit", handleSubmit);
